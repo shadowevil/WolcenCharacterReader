@@ -25,6 +25,7 @@ namespace WolcenData
         public Stats Stats { get; set; }
         public List<UnlockedSkill> UnlockedSkills { get; set; }
         public List<SkillBar> SkillBar { get; set; }
+        // TODO Figure out PassiveSkills???
         public List<object> PassiveSkills { get; set; }
         public List<BeltConfig> BeltConfig { get; set; }
         public Progression Progression { get; set; }
@@ -194,28 +195,6 @@ namespace WolcenData
                     RemoveNullProperties(item);
                 }
             }
-        }
-    }
-
-    public class IgnoreNullContractResolver : DefaultContractResolver
-    {
-        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
-        {
-            JsonProperty property = base.CreateProperty(member, memberSerialization);
-
-            if (property.PropertyType.IsClass && property.PropertyType != typeof(string))
-            {
-                property.ShouldSerialize = obj =>
-                {
-                    var value = member is PropertyInfo propInfo
-                        ? propInfo.GetValue(obj)
-                        : null;
-
-                    return value != null;
-                };
-            }
-
-            return property;
         }
     }
 }
