@@ -90,31 +90,54 @@ namespace WolcenData
             DateTime dateTime = new DateTime(DateTime.Now.Ticks, DateTimeKind.Utc);
             UpdatedAt = dateTime.ToString("yy-MM-ddTHH:mm:ssZ");
 
-            JObject jsonObject = JObject.FromObject(this);
-            jsonObject.Remove("InventoryGrid");
-            jsonObject.Remove("InventoryEquipped");
-            jsonObject.Remove("InventoryBelt");
-
             JArray invEquipped = new JArray();
-            foreach(WolcenData.InventoryEquipped inventoryEquipped in InventoryEquipped)
+            foreach (WolcenData.InventoryEquipped inventoryEquipped in InventoryEquipped)
             {
                 invEquipped.Add(inventoryEquipped.WriteJson());
             }
-            jsonObject.Add("InventoryEquipped", invEquipped);
 
             JArray invBelt = new JArray();
             foreach (WolcenData.InventoryBelt inventoryBelt in InventoryBelt)
             {
                 invBelt.Add(inventoryBelt.WriteJson());
             }
-            jsonObject.Add("InventoryBelt", invBelt);
 
             JArray invGrid = new JArray();
-            foreach(WolcenData.InventoryGrid inventoryGrid in InventoryGrid)
+            foreach (WolcenData.InventoryGrid inventoryGrid in InventoryGrid)
             {
                 invGrid.Add(inventoryGrid.WriteJson());
             }
-            jsonObject.Add("InventoryGrid", invGrid);
+
+            JObject jsonObject = new JObject
+            {
+                { "Name", Name },
+                { "PlayerId", PlayerId },
+                { "CharacterId", CharacterId },
+                { "DifficultyMode", DifficultyMode },
+                { "League", League },
+                { "UpdatedAt", UpdatedAt },
+                { "CharacterCustomization", JToken.FromObject(CharacterCustomization) },
+                { "Stats", JToken.FromObject(Stats) },
+                { "UnlockedSkills", JToken.FromObject(UnlockedSkills) },
+                { "SkillBar", JToken.FromObject(SkillBar) },
+                { "PassiveSkills", JToken.FromObject(PassiveSkills) },
+                { "BeltConfig", JToken.FromObject(BeltConfig) },
+                { "Progression", JToken.FromObject(Progression) },
+                { "Telemetry", JToken.FromObject(Telemetry) },
+                { "Versions", JToken.FromObject(Versions) },
+                { "CharacterCosmeticInventory", JToken.FromObject(CharacterCosmeticInventory) },
+                { "InventoryEquipped", invEquipped },
+                { "InventoryGrid", invGrid },
+                { "InventoryBelt", invBelt },
+                { "PSTConfig", JToken.FromObject(PSTConfig) },
+                { "ApocalypticData", JToken.FromObject(ApocalypticData) },
+                { "PetsData", JToken.FromObject(PetsData) },
+                { "Tutorials", JToken.FromObject(Tutorials) },
+                { "LastGameParameters", JToken.FromObject(LastGameParameters) },
+                { "CityBuilding", JToken.FromObject(CityBuilding) },
+                { "pro", JToken.FromObject(Pro) },
+                { "Rewards", JToken.FromObject(Rewards) }
+            };
 
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
@@ -139,7 +162,7 @@ namespace WolcenData
 
             while (File.Exists(backupFilePath))
             {
-                backupFilePath = $"{originalPath}_{counter:D2}{extension}";
+                backupFilePath = $"{backupFilePath}_{counter:D2}{extension}";
                 counter++;
             }
 

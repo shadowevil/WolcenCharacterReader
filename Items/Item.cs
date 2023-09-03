@@ -15,6 +15,7 @@ namespace WolcenData.Items
         Armor,
         Weapon,
         Potion,
+        Enneract,
         Unknown
     }
 
@@ -24,11 +25,12 @@ namespace WolcenData.Items
         public int Quality { get; set; }
         public int Type { get; set; }
         public string ItemType { get; set; }
-        public int Value { get; set; }
+        public string Value { get; set; }
         public int Level { get; set; }
         public Armor Armor { get; set; }
         public Weapon Weapon { get; set; }
         public Potion Potion { get; set; }
+        public Enneract Enneract { get; set; }
         public MagicEffect MagicEffects { get; set; }
 
         public static Item CreateItem(JObject jObject)
@@ -44,6 +46,7 @@ namespace WolcenData.Items
                 if (Armor != null) return ItemTypeEnum.Armor;
                 if (Weapon != null) return ItemTypeEnum.Weapon;
                 if (Potion != null) return ItemTypeEnum.Potion;
+                if (Enneract != null) return ItemTypeEnum.Enneract;
                 return ItemTypeEnum.Unknown;
             }
         }
@@ -51,7 +54,6 @@ namespace WolcenData.Items
         public JObject WriteJson()
         {
             JObject json = JObject.FromObject(this);
-            //CharacterData.RemoveNullProperties(json);
             return json;
         }
     }

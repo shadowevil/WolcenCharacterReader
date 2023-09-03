@@ -62,6 +62,7 @@
     <Compile Include="Items\Magic\EffectParameter.cs" />
     <Compile Include="Items\Magic\MagicEffect.cs" />
     <Compile Include="Items\Subclass Items\Armor.cs" />
+    <Compile Include="Items\Subclass Items\Enneract.cs" />
     <Compile Include="Items\Subclass Items\Potion.cs" />
     <Compile Include="Items\Subclass Items\Weapon.cs" />
     <Compile Include="Data\LastGameParameters.cs" />
