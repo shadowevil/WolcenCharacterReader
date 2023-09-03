@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6CC246E-8CF1-447B-B213-73C27C85659D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WolcenData</RootNamespace>
+    <AssemblyName>WolcenData</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\ApocalypticData.cs" />
+    <Compile Include="Data\BeltConfig.cs" />
+    <Compile Include="Data\CharacterCustomization.cs" />
+    <Compile Include="CharacterData.cs" />
+    <Compile Include="Data\CityBuilding.cs" />
+    <Compile Include="Cosmetics\CharacterCosmeticInventory.cs" />
+    <Compile Include="Cosmetics\CosmeticColors.cs" />
+    <Compile Include="Cosmetics\CosmeticSkinT.cs" />
+    <Compile Include="Cosmetics\CosmeticWeaponT.cs" />
+    <Compile Include="Cosmetics\Equip.cs" />
+    <Compile Include="Cosmetics\WeaponSkinTransfers.cs" />
+    <Compile Include="Data\InventoryBelt.cs" />
+    <Compile Include="Data\InventoryEquipped.cs" />
+    <Compile Include="Data\InventoryGrid.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Magic\EffectParameter.cs" />
+    <Compile Include="Items\Magic\MagicEffect.cs" />
+    <Compile Include="Items\Subclass Items\Armor.cs" />
+    <Compile Include="Items\Subclass Items\Potion.cs" />
+    <Compile Include="Items\Subclass Items\Weapon.cs" />
+    <Compile Include="Data\LastGameParameters.cs" />
+    <Compile Include="Data\PetsData.cs" />
+    <Compile Include="Data\Pro.cs" />
+    <Compile Include="Data\Progression.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\PSTConfig.cs" />
+    <Compile Include="Data\Rewards.cs" />
+    <Compile Include="Data\SkillBar.cs" />
+    <Compile Include="Data\Stats.cs" />
+    <Compile Include="Telemetry\CountInfo.cs" />
+    <Compile Include="Telemetry\ItemInfo.cs" />
+    <Compile Include="Telemetry\KillCount.cs" />
+    <Compile Include="Telemetry\Playtime.cs" />
+    <Compile Include="Telemetry\SkillUsage.cs" />
+    <Compile Include="Telemetry\Telemetry.cs" />
+    <Compile Include="Telemetry\ZoneInfo.cs" />
+    <Compile Include="Data\Tutorials.cs" />
+    <Compile Include="Data\UnlockedSkill.cs" />
+    <Compile Include="Data\Versions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
